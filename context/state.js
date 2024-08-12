@@ -20,7 +20,7 @@ export function AppWrapper({ children }) {
   const network = 137;
   const USDC_ADDRESS = "0x41E94Eb019C0762f9Bfcf9Fb1E58725BfB0e7582"
   const USDT_RECEIVER_ADDRESS = "0x316747dddD12840b29b87B7AF16Ba6407C17F19b"
-  const ONDK_ADDRESS = "0x961e742066e3d1cAD863A45a82C7B6e87bB3A02F"
+  const ONDK_ADDRESS = "0xfb83eEA4B384a4b18E5A1EBa7a4bb4C0b7CA19c1"
 
   const connectWallet = async () => {
     const {
@@ -69,9 +69,9 @@ let ERC20_ABI = require("@config/abi/erc20.json");
   }
   }
    getONDKBalance()
-  const transfer = async (usdtAmount,usdtAddress, ondkAmount, network, networkId, ondkReceiverAddress, providerUrl) => {
+  const transfer = async (usdtAmount,usdtAddress, tokenAmount, network, networkId, tokenReceiverAddress, providerUrl) => {
     let weiUSDTValue = usdtAmount * 10 ** 6
-    let weiONDKValue = ondkAmount * 10 ** 18
+    let weiTokenValue = tokenAmount * 10 ** 18
 
     let ERC20_ABI = require("@config/abi/erc20.json");
     let provider = await detectEthereumProvider();
@@ -95,18 +95,18 @@ let ERC20_ABI = require("@config/abi/erc20.json");
             "networkId": String(networkId),
             "buyerAddress": receipt.from,
             "usdtReceiverAddress": USDT_RECEIVER_ADDRESS,
-            "ondkReceiverAddress": ondkReceiverAddress,
+            "tokenReceiverAddress": tokenReceiverAddress,
             "txHash": receipt.transactionHash,
             "usdtAddress": USDC_ADDRESS,
             "usdtAmount": String(usdtAmount),
-            "ondkAmount": String(ondkAmount),
+            "tokenAmount": String(tokenAmount),
             "weiUSDTValue": String(weiUSDTValue),
-            "weiONDKValue": String(weiONDKValue),
+            "weiTokenValue": String(weiTokenValue),
             "approved": true
           })
           Swal.fire({
-            title: `${ondkAmountONDK} $ONDK sent to`,
-            text: ondkReceiverAddress,
+            title: `${tokenAmountONDK} $ONDK sent to`,
+            text: tokenReceiverAddress,
             icon: "success"
           });
           getONDKBalance()

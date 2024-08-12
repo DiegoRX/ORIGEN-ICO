@@ -39,7 +39,7 @@ const Home = () => {
       alert('fill the gaps')
     } else {
       Swal.fire({
-        title: "Varify your deposit address",
+        title: "Verify your deposit address",
         text: onkdReceiverAddressValue,
         icon: "warning"
       });
@@ -86,7 +86,7 @@ const Home = () => {
     if (index == 0) {
       Swal.fire({
         title: "Add Orden Global blockchain and ONDK token to Metamask",
-        text: "https://ordenglobal-rpc.com 0x961e742066e3d1cAD863A45a82C7B6e87bB3A02F",
+        text: "https://ordenglobal-rpc.com 0xfb83eEA4B384a4b18E5A1EBa7a4bb4C0b7CA19c1",
         icon: "warning"
       });
       onkdReceiverAddressRef.current.value = walletAddress
